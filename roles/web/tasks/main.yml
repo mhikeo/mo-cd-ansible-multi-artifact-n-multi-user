@@ -15,5 +15,20 @@
   command:
     cmd: "cp -r /tmp/{{ artifact.root_path }} {{ artifact.target_folder }}"
 
+- name: Run whoami command
+  command: whoami
+  register: whoami_output
+  become_user: user1
+
+- name: Debug whoami output
+  debug:
+    var: whoami_output.stdout
+
 - name: Run the script
   command: "{{ artifact.script_path }}"
+  become_user: user1
+
+- name: Clean up deployment
+  file:
+    path: "/tmp/{{ artifact.artifact_name }}"
+    state: absent

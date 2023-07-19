@@ -13,10 +13,10 @@ artifacts:
     script_path: "/home/web/scripts/deploy.sh"
     type: "web"
 
-  - artifact_path: "/db-artifacts"
-    artifact_name: "db.v1.0.0.zip"
-    root_path: "db"
+  - artifact_path: "/java-artifacts"
+    artifact_name: "java.v1.0.0.zip"
+    root_path: "java"
     target_folder: "/home"
-    script_path: "/home/db/scripts/deploy.sh"
-    type: 'db'
+    script_path: "/home/java/scripts/deploy.sh"
+    type: 'java'
 

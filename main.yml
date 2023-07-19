@@ -1,5 +1,5 @@
 ---
-# DEPLOYMENT SEQUENCE
+DEPLOYMENT SEQUENCE
 - name: SEQUENCE 1 --  Deploying DB'
   hosts: db
   vars_files:
@@ -13,6 +13,7 @@
 
 - name: SEQUENCE 2 --  Deploying WEB'
   hosts: web
+  become: true
   vars_files:
     - artifacts.yml
   tasks:
@@ -22,14 +23,14 @@
       vars:
         artifact: "{{ artifacts[1] }}"
 
-- name: SEQUENCE 3 --  Deploying DB'
-  hosts: db
+- name: SEQUENCE 3 --  Deploying Java'
+  hosts: java
   vars_files:
     - artifacts.yml
   tasks:
-    - name: Run DB role for artifact
+    - name: Run Java role for artifact
       include_role:
-        name: db
+        name: java
       vars:
         artifact: "{{ artifacts[2] }}"
 
