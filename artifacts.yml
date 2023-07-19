@@ -1,0 +1,22 @@
+artifacts:
+  - artifact_path: "/db-artifacts"
+    artifact_name: "db.v1.0.0.zip"
+    root_path: "db"
+    target_folder: "/home"
+    script_path: "/home/db/scripts/deploy.sh"
+    type: 'db'
+
+  - artifact_path: "/web-artifacts"
+    artifact_name: "web.v1.0.0.zip"
+    root_path: "web"
+    target_folder: "/home"
+    script_path: "/home/web/scripts/deploy.sh"
+    type: "web"
+
+  - artifact_path: "/db-artifacts"
+    artifact_name: "db.v1.0.0.zip"
+    root_path: "db"
+    target_folder: "/home"
+    script_path: "/home/db/scripts/deploy.sh"
+    type: 'db'
+

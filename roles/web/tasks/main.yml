@@ -1,0 +1,19 @@
+---
+- name: Download artifact from Artifactory
+  get_url:
+    url: "{{ artifactory_host }}{{ artifact.artifact_path }}/{{ artifact.artifact_name }}"
+    dest: "/tmp/{{ artifact.artifact_name }}"
+    mode: '0440'
+
+- name: Extract artifact
+  unarchive:
+    src: "/tmp/{{ artifact.artifact_name }}"
+    dest: "/tmp"
+    remote_src: yes
+
+- name: Copy files to target folder
+  command:
+    cmd: "cp -r /tmp/{{ artifact.root_path }} {{ artifact.target_folder }}"
+
+- name: Run the script
+  command: "{{ artifact.script_path }}"
